@@ -1,5 +1,9 @@
+// ✅ Ensure script.js is loaded
+console.log("✅ script.js is loaded and running");
+
+// ✅ Function to analyze a book using the API
 async function analyzeBook(bookTitle) {
-    const API_KEY = 'AIzaSyDpujbyrAZ1I_hniPtJNZwnMClGSjfLj-A'; // Secure in backend
+    const API_KEY = 'YOUR_API_KEY_HERE'; // 🔒 Move this to a backend in production
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
     try {
@@ -46,3 +50,51 @@ Format as JSON ONLY: {"pageCount": number, "readingTime": number, "summary": str
         throw error;
     }
 }
+
+// ✅ Attach processBook to window to make it accessible globally
+window.processBook = async function() {
+    console.log("📖 Processing book...");
+
+    const bookInput = document.getElementById('bookInput');
+    const bookTitle = bookInput.value.trim();
+
+    if (!bookTitle || bookTitle.length > 100) {
+        alert('Please enter a valid book title (max 100 characters).');
+        return;
+    }
+
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+
+    try {
+        loading.style.display = 'block'; // Show loading message
+        results.style.opacity = '0.5';   // Fade results
+
+        const analysis = await analyzeBook(bookTitle);
+
+        // ✅ Update DOM with results
+        document.getElementById('pageCount').textContent = `${analysis.pageCount} pages`;
+        document.getElementById('readingTime').textContent = `${analysis.readingTime} hours (${Math.round(analysis.readingTime / 2)} days at 2hr/day)`;
+        document.getElementById('summary').textContent = analysis.summary;
+        document.getElementById('category').textContent = analysis.categories.join(' | ');
+
+    } catch (error) {
+        alert('Error analyzing book: ' + error.message);
+    } finally {
+        loading.style.display = 'none';  // Hide loading
+        results.style.opacity = '1';     // Restore results opacity
+    }
+};
+
+// ✅ Ensure event listeners work
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("✅ DOM fully loaded and ready");
+
+    // Attach event listener to button
+    document.querySelector("button").addEventListener("click", processBook);
+
+    // Enable "Enter" keypress for input
+    document.getElementById('bookInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') processBook();
+    });
+});
