@@ -1,5 +1,5 @@
 async function analyzeBook(bookTitle) {
-    const API_KEY = 'YOUR_API_KEY_HERE'; // Secure in backend
+    const API_KEY = 'AIzaSyDpujbyrAZ1I_hniPtJNZwnMClGSjfLj-A'; // Secure in backend
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
     try {
