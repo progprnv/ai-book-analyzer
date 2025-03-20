@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookMind AI - Smart Book Insights</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Book Summary AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #f4f4f8;
+            padding: 50px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            white-space: pre-line;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>BookMind AI</h1>
-            <p>Discover books through artificial intelligence</p>
-        </header>
 
-        <div class="search-container">
-            <input type="text" placeholder="Enter book title..." id="bookInput">
-            <button onclick="processBook()">Analyze</button>
-        </div>
+    <h1>Book Summary AI</h1>
+    <p>Enter a book title and get a summary from AI.</p>
+    
+    <input type="text" id="bookInput" placeholder="Enter book title..." />
+    <button onclick="getBookSummary()">Get Summary</button>
 
-        <div class="loading" id="loading">
-            Analyzing book with AI...
-        </div>
+    <div id="response">Waiting for input...</div>
 
-        <div class="results-grid" id="results">
-            <div class="result-card">
-                <div class="result-title">📖 Page Count</div>
-                <div class="result-content" id="pageCount">-</div>
-            </div>
-            <div class="result-card">
-                <div class="result-title">⏳ Reading Time</div>
-                <div class="result-content" id="readingTime">-</div>
-            </div>
-            <div class="result-card">
-                <div class="result-title">📝 Summary</div>
-                <div class="result-content" id="summary">-</div>
-            </div>
-            <div class="result-card">
-                <div class="result-title">🔖 Category</div>
-                <div class="result-content" id="category">-</div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js" defer></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
