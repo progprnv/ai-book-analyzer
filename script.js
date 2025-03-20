@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify({
                     contents: [{
                         parts: [{
-                            text: `Give a short summary of the book "${bookTitle}". Just output the text, no JSON.`
+                            text: `Give a short summary of the book "${bookTitle}" give the page count, author, audience rating, related books as bulleted. you can add emojis too alongside. Just output the text, no JSON.`
                         }]
                     }]
                 })
