@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMind AI - Smart Book Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BookMind AI</h1>
+            <p>Discover books through artificial intelligence</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" placeholder="Enter book title..." id="bookInput">
+            <button onclick="processBook()">Analyze</button>
+        </div>
+
+        <div class="loading" id="loading">
+            Analyzing book with AI...
+        </div>
+
+        <div class="results-grid" id="results">
+            <div class="result-card">
+                <div class="result-title">📖 Page Count</div>
+                <div class="result-content" id="pageCount">-</div>
+            </div>
+            <div class="result-card">
+                <div class="result-title">⏳ Reading Time</div>
+                <div class="result-content" id="readingTime">-</div>
+            </div>
+            <div class="result-card">
+                <div class="result-title">📝 Summary</div>
+                <div class="result-content" id="summary">-</div>
+            </div>
+            <div class="result-card">
+                <div class="result-title">🔖 Category</div>
+                <div class="result-content" id="category">-</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
